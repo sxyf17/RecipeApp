@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/home.dart';
+import 'package:recipe_app/log_in.dart';
 
 
 void main() {

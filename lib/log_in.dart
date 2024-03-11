@@ -74,7 +74,7 @@ class _RecipeHomeState extends State<RecipeHome> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const GlobalRecipesPage()),
+                        builder: (context) => const GlobalRecipesPage(title: 'Global Recipes',)),
                   );
                 },
                 style: ElevatedButton.styleFrom(
