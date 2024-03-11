@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/index.dart';
+import 'package:recipe_app/util/index.dart';
 
-class AddRecipe extends StatefulWidget {
+class ShoppingCart extends StatefulWidget {
   final String title;
-  const AddRecipe({super.key, required this.title});
+  const ShoppingCart({super.key, required this.title});
 
   @override
-  State<AddRecipe> createState() => _AddRecipeState();
+  State<ShoppingCart> createState() => _ShoppingCartState();
 }
 
-class _AddRecipeState extends State<AddRecipe> {
+class _ShoppingCartState extends State<ShoppingCart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,9 @@ class _AddRecipeState extends State<AddRecipe> {
       drawer: const AppMenu(),
       body: const Center(
         child: Column(
-          children: [Text('TODO: Add_Recipe Screen')],
+          children: [
+            Text('TODO: Shopping Cart Screen')
+          ],
         ),
       ),
     );

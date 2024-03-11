@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/index.dart';
+import 'package:recipe_app/util/index.dart';
 
-class LikedRecipes extends StatefulWidget {
+class AddRecipe extends StatefulWidget {
   final String title;
-  const LikedRecipes({super.key, required this.title});
+  const AddRecipe({super.key, required this.title});
 
   @override
-  State<LikedRecipes> createState() => _LikedRecipesState();
+  State<AddRecipe> createState() => _AddRecipeState();
 }
 
-class _LikedRecipesState extends State<LikedRecipes> {
+class _AddRecipeState extends State<AddRecipe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class _LikedRecipesState extends State<LikedRecipes> {
       drawer: const AppMenu(),
       body: const Center(
         child: Column(
-          children: [Text('TODO: Liked Recipes Screen')],
+          children: [Text('TODO: Add_Recipe Screen')],
         ),
       ),
     );

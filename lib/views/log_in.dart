@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/global_recipe_page.dart';
-import 'package:recipe_app/sign_up.dart';
+import 'package:recipe_app/util/index.dart';
+import 'package:recipe_app/views/sign_up.dart';
 
 class RecipeHome extends StatefulWidget {
-  const RecipeHome({super.key, required this.title});
+  const RecipeHome({super.key});
 
-  final String title;
+
 
   @override
   State<RecipeHome> createState() => _RecipeHomeState();

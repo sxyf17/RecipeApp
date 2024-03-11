@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/index.dart';
+import 'package:recipe_app/util/index.dart';
 
-class ShoppingCart extends StatefulWidget {
+class LikedRecipes extends StatefulWidget {
   final String title;
-  const ShoppingCart({super.key, required this.title});
+  const LikedRecipes({super.key, required this.title});
 
   @override
-  State<ShoppingCart> createState() => _ShoppingCartState();
+  State<LikedRecipes> createState() => _LikedRecipesState();
 }
 
-class _ShoppingCartState extends State<ShoppingCart> {
+class _LikedRecipesState extends State<LikedRecipes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +20,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
       drawer: const AppMenu(),
       body: const Center(
         child: Column(
-          children: [
-            Text('TODO: Shopping Cart Screen')
-          ],
+          children: [Text('TODO: Liked Recipes Screen')],
         ),
       ),
     );

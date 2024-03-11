@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/index.dart';
+import 'package:recipe_app/util/index.dart';
+import '../views/log_in.dart';
 
 class AppMenu extends StatelessWidget {
   const AppMenu({
@@ -24,7 +25,10 @@ class AppMenu extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const LikedRecipes(title: 'Liked Recipes',)),
+                MaterialPageRoute(
+                    builder: (context) => const LikedRecipes(
+                          title: 'Liked Recipes',
+                        )),
               );
             },
           ),
@@ -42,7 +46,9 @@ class AppMenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const GlobalRecipesPage(title: 'Global Recipes',)),
+                    builder: (context) => const GlobalRecipesPage(
+                          title: 'Global Recipes',
+                        )),
               );
             },
           ),
@@ -59,7 +65,10 @@ class AppMenu extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ShoppingCart(title: 'My Shopping Cart',)),
+                MaterialPageRoute(
+                    builder: (context) => const ShoppingCart(
+                          title: 'My Shopping Cart',
+                        )),
               );
             },
           ),
@@ -73,7 +82,10 @@ class AppMenu extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const AddRecipe(title: 'Add Recipe',)),
+                MaterialPageRoute(
+                    builder: (context) => const AddRecipe(
+                          title: 'Add Recipe',
+                        )),
               );
             },
           ),
@@ -85,7 +97,11 @@ class AppMenu extends StatelessWidget {
             ),
             trailing: const Icon(Icons.logout, size: 40),
             onTap: () {
-              // Add your onTap logic here
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RecipeHome(),
+                  ));
             },
           )
         ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/log_in.dart';
+import 'package:recipe_app/views/log_in.dart';
 
 
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const RecipeHome(title: 'Recipe Home Page',),
+      home: const RecipeHome(),
     );
   }
 }

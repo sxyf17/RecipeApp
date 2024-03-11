@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/index.dart';
+import 'package:recipe_app/util/index.dart';
 
 class GlobalRecipesPage extends StatelessWidget {
   final String title;

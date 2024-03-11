@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:recipe_app/global_recipe_page.dart';
+import '../util/index.dart';
 
 // Create a Form widget.
 class SignUpPage extends StatefulWidget {
