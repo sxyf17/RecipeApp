@@ -1,23 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/util/index.dart';
+import '../models/recipe.api.dart';
+import '../models/recipe.dart';
 
-class GlobalRecipesPage extends StatelessWidget {
+class GlobalRecipesPage extends StatefulWidget {
   final String title;
   const GlobalRecipesPage({super.key, required this.title});
+
+  @override
+  State<GlobalRecipesPage> createState() => _GlobalRecipesPageState();
+}
+
+class _GlobalRecipesPageState extends State<GlobalRecipesPage> {
+  late List<Recipe> _recipes;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getRecipes();
+  }
+
+  Future<void> getRecipes() async {
+    _recipes = await RecipeApi.getRecipe();
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          title: Text(widget.title),
           backgroundColor: Colors.deepOrange,
         ),
         drawer: const AppMenu(),
-        body: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text('TODO: Global/All Recipes Screen')],
-          ),
-        ));
+        body: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                itemCount: _recipes.length,
+                itemBuilder: (context, index) {
+                  return RecipeCard(
+                      title: _recipes[index].name,
+                      cookTime: _recipes[index].totalTime,
+                      rating: _recipes[index].rating.toString(),
+                      thumbnailUrl: _recipes[index].images);
+                },
+              ));
   }
 }

@@ -18,7 +18,7 @@ class RecipeCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 180,
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: Colors.grey,
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
@@ -50,6 +50,7 @@ class RecipeCard extends StatelessWidget {
                 title,
                 style: const TextStyle(
                   fontSize: 19,
+                  color: Colors.white
                 ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
@@ -77,7 +78,7 @@ class RecipeCard extends StatelessWidget {
                         size: 18,
                       ),
                       const SizedBox(width: 7),
-                      Text(rating),
+                      Text(rating, style: const TextStyle(color: Colors.white),),
                     ],
                   ),
                 ),
@@ -96,7 +97,8 @@ class RecipeCard extends StatelessWidget {
                         size: 18,
                       ),
                       const SizedBox(width: 7),
-                      Text(cookTime),
+                      Text(cookTime,
+                          style: const TextStyle(color: Colors.white)),
                     ],
                   ),
                 )
