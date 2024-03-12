@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class RecipeHome extends StatefulWidget {
   const RecipeHome({super.key, required this.title});
@@ -44,34 +45,42 @@ class _RecipeHomeState extends State<RecipeHome> {
             const SizedBox(
               height: 10,
             ),
-            
             const SizedBox(
               width: 250,
               child: TextField(
-              decoration: InputDecoration(
+                decoration: InputDecoration(
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20))
-                  ), 
-                  hintText: 'Username...',),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  hintText: 'Username...',
+                ),
               ),
             ),
             const SizedBox(height: 5),
             const SizedBox(
               width: 250,
               child: TextField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20))
-                  ), hintText: 'Password...'),
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    hintText: 'Password...'),
               ),
             ),
-            const SizedBox(height: 10,),
-            ElevatedButton(onPressed: () {}, style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple[100]), child: const Text('Log In')),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () => context.go('/global_recipes'),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple[100]),
+                child: const Text('Log In')),
             const SizedBox(
               height: 5,
             ),
-            ElevatedButton(onPressed: () {}, style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple[100]), child: const Text('Sign Up'))
+            ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple[100]),
+                child: const Text('Sign Up'))
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
