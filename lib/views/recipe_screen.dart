@@ -28,30 +28,48 @@ class RecipeScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.9,
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 5),
               child: const Text(
-                'Instraction',
+                'Instructions',
                 style: TextStyle(
                   fontSize: 25,
                 ),
               ),
             ),
             Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0), // 丸角の半径を指定
-                  color: Color.fromARGB(255, 222, 219, 219), // コンテナの背景色
-                ),
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: 180,
-                padding: const EdgeInsets.all(10.0),
-                child: Center(
-                  child: SingleChildScrollView(
-                    child: Text(
-                      recipe.steps.toString(),
-                      style: TextStyle(
-                        fontSize: 18,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0), // 丸角の半径を指定
+                color: Color.fromARGB(255, 222, 219, 219), // コンテナの背景色
+              ),
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: 180,
+              padding: const EdgeInsets.all(10.0),
+              child: Center(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Text(
+                        'Steps:',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
+                      // Loop through each step and display it in a separate Text widget
+                      for (String step in recipe.steps)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Text(
+                            step,
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
-                ))
+                ),
+              ),
+            )
           ],
         ),
       ),
