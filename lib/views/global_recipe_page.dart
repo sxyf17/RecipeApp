@@ -41,11 +41,13 @@ class _GlobalRecipesPageState extends State<GlobalRecipesPage> {
             : ListView.builder(
                 itemCount: _recipes.length,
                 itemBuilder: (context, index) {
+                  print(_recipes[index]);
                   return RecipeCard(
                       title: _recipes[index].name,
                       cookTime: _recipes[index].totalTime,
                       rating: _recipes[index].rating.toString(),
-                      thumbnailUrl: _recipes[index].images);
+                      thumbnailUrl: _recipes[index].images,
+                      steps: _recipes[index].steps);
                 },
               ));
   }
