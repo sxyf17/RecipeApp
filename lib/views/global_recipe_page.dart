@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/util/index.dart';
 import '../models/recipe.api.dart';
 import '../models/recipe.dart';
+import 'recipe_screen.dart';
 
 class GlobalRecipesPage extends StatefulWidget {
   final String title;
@@ -42,12 +43,23 @@ class _GlobalRecipesPageState extends State<GlobalRecipesPage> {
                 itemCount: _recipes.length,
                 itemBuilder: (context, index) {
                   print(_recipes[index]);
-                  return RecipeCard(
-                      title: _recipes[index].name,
-                      cookTime: _recipes[index].totalTime,
-                      rating: _recipes[index].rating.toString(),
-                      thumbnailUrl: _recipes[index].images,
-                      steps: _recipes[index].steps);
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RecipeScreen(
+                                    title: 'Recipe Detailes',
+                                    recipe: _recipes[index],
+                                  )),
+                        );
+                      },
+                      child: RecipeCard(
+                          title: _recipes[index].name,
+                          cookTime: _recipes[index].totalTime,
+                          rating: _recipes[index].rating.toString(),
+                          thumbnailUrl: _recipes[index].images,
+                          steps: _recipes[index].steps));
                 },
               ));
   }
