@@ -19,6 +19,7 @@ class RecipeScreen extends StatelessWidget {
         child: Column(
           children: [
             RecipeCard(
+                recipe: recipe,
                 title: recipe.name,
                 cookTime: recipe.totalTime,
                 rating: recipe.rating.toString(),
