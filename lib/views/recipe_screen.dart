@@ -19,6 +19,7 @@ class RecipeScreen extends StatelessWidget {
         child: Column(
           children: [
             RecipeCard(
+                recipe: recipe,
                 title: recipe.name,
                 cookTime: recipe.totalTime,
                 rating: recipe.rating.toString(),
@@ -47,7 +48,7 @@ class RecipeScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      Text(
+                      const Text(
                         'Steps:',
                         style: TextStyle(
                           fontSize: 18,

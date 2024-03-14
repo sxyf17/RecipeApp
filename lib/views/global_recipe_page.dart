@@ -42,25 +42,25 @@ class _GlobalRecipesPageState extends State<GlobalRecipesPage> {
             : ListView.builder(
                 itemCount: _recipes.length,
                 itemBuilder: (context, index) {
-                  print(_recipes[index]);
                   return GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => RecipeScreen(
-                                    title: 'Recipe Detailes',
+                                    title: 'Recipe Details',
                                     recipe: _recipes[index],
                                   )),
                         );
                       },
                       child: RecipeCard(
+                          recipe: _recipes[index],
                           title: _recipes[index].name,
                           cookTime: _recipes[index].totalTime,
                           rating: _recipes[index].rating.toString(),
                           thumbnailUrl: _recipes[index].images,
                           steps: _recipes[index].steps));
                 },
-              ));
+              )); 
   }
 }

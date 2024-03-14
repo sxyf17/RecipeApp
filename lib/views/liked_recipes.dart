@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:recipe_app/models/recipe.dart';
 import 'package:recipe_app/util/index.dart';
 
-class LikedRecipes extends StatefulWidget {
+class LikedRecipesScreen extends StatefulWidget {
   final String title;
-  const LikedRecipes({super.key, required this.title});
+  const LikedRecipesScreen({Key? key, required this.title}) : super(key: key);
 
   @override
-  State<LikedRecipes> createState() => _LikedRecipesState();
+  // ignore: library_private_types_in_public_api
+  _LikedRecipesScreenState createState() => _LikedRecipesScreenState();
 }
 
-class _LikedRecipesState extends State<LikedRecipes> {
+class _LikedRecipesScreenState extends State<LikedRecipesScreen> {
+  late List<Recipe> _likedRecipes = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLikedRecipes();
+  }
+
+  Future<void> _loadLikedRecipes() async {
+    final likedRecipesBox = await Hive.box<Recipe>('likedRecipes');
+    setState(() {
+      _likedRecipes = likedRecipesBox.values.toList();
+    });
+    print(_likedRecipes);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,11 +37,24 @@ class _LikedRecipesState extends State<LikedRecipes> {
         backgroundColor: Colors.deepOrange,
       ),
       drawer: const AppMenu(),
-      body: const Center(
-        child: Column(
-          children: [Text('TODO: Liked Recipes Screen')],
-        ),
-      ),
+      body: _likedRecipes.isNotEmpty
+          ? ListView.builder(
+              itemCount: _likedRecipes.length,
+              itemBuilder: (context, index) {
+                final recipe = _likedRecipes[index];
+                return RecipeCard(
+                  recipe: recipe,
+                  title: recipe.name,
+                  cookTime: recipe.totalTime,
+                  rating: recipe.rating.toString(),
+                  thumbnailUrl: recipe.images,
+                  steps: recipe.steps,
+                );
+              },
+            )
+          : const Center(
+              child: Text('No liked recipes yet!'),
+            ),
     );
   }
 }

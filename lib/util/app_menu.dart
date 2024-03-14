@@ -26,7 +26,7 @@ class AppMenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const LikedRecipes(
+                    builder: (context) => const LikedRecipesScreen(
                           title: 'Liked Recipes',
                         )),
               );

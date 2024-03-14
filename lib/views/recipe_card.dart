@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:recipe_app/models/recipe.dart';
 
 class RecipeCard extends StatelessWidget {
+  final Recipe recipe;
   final String title;
   final String rating;
   final String cookTime;
   final String thumbnailUrl;
   final List<String> steps;
-  const RecipeCard({super.key, 
-    required this.title,
-    required this.cookTime,
-    required this.rating,
-    required this.thumbnailUrl,
-    required this.steps
-  });
+  RecipeCard(
+      {super.key,
+      required this.recipe,
+      required this.title,
+      required this.cookTime,
+      required this.rating,
+      required this.thumbnailUrl,
+      required this.steps});
+
+  final _likedRecipesBox = Hive.box<Recipe>('likedRecipesBox');
+
+  Future<void> _addToLiked(Recipe recipe) async {
+    await _likedRecipesBox.add(recipe);
+  }
+
+  Recipe? readData(Recipe recipe) {
+    print(_likedRecipesBox.get(1));
+    return _likedRecipesBox.get(recipe.name);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,10 +66,7 @@ class RecipeCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 19,
-                  color: Colors.white
-                ),
+                style: const TextStyle(fontSize: 19, color: Colors.white),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 textAlign: TextAlign.center,
@@ -74,13 +87,21 @@ class RecipeCard extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      const Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: 18,
+                      ElevatedButton(
+                          onPressed: () => _addToLiked(recipe),
+                          child: Image.asset(
+                            'assets/images/red_heart.png',
+                            height: 7,
+                          )),
+                      const SizedBox(
+                        height: 7,
                       ),
-                      const SizedBox(width: 7),
-                      Text(rating, style: const TextStyle(color: Colors.white),),
+                      const SizedBox(
+                        height: 7,
+                      ),
+                      ElevatedButton(
+                          onPressed: () => readData(recipe),
+                          child: const Text('test get'))
                     ],
                   ),
                 ),
