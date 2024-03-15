@@ -47,7 +47,7 @@ class Recipe {
         totalTime: json['details']['totalTime'] as String,
         steps: json['preparationSteps'] != null
             ? List<String>.from(json['preparationSteps'])
-            : [], // If steps are null, initialize with an empty list
+            : [],
 
         ingredients: ingredients);
   }

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:recipe_app/models/recipe_adapter.dart';
 import 'package:recipe_app/util/index.dart';
 import '../models/recipe.api.dart';
-import '../models/recipe.dart';
 import 'recipe_screen.dart';
 
 class GlobalRecipesPage extends StatefulWidget {
@@ -52,7 +49,7 @@ class _GlobalRecipesPageState extends State<GlobalRecipesPage> {
                           MaterialPageRoute(
                               builder: (context) => RecipeScreen(
                                     title: 'Recipe Details',
-                                    recipe: _recipes[index] as Recipe,
+                                    recipe: _recipes[index],
                                   )),
                         );
                       },

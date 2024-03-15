@@ -72,7 +72,7 @@ class _RecipeHomeState extends State<RecipeHome> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const AddRecipe(title: 'Global Recipes',)),
+                        builder: (context) => const LikedRecipesScreen(title: 'Liked Recipes',)),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -92,7 +92,7 @@ class _RecipeHomeState extends State<RecipeHome> {
                 child: const Text('Sign Up'))
           ],
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

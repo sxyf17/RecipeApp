@@ -15,7 +15,7 @@ class AppMenu extends StatelessWidget {
           ListTile(
             horizontalTitleGap: 10,
             title: const Text(
-              'My Liked',
+              'My Liked Recipes',
               textAlign: TextAlign.start,
             ),
             trailing: Image.asset(
@@ -55,19 +55,19 @@ class AppMenu extends StatelessWidget {
           ListTile(
             horizontalTitleGap: 10,
             title: const Text(
-              'My Cart',
+              'My Grocery List',
               textAlign: TextAlign.start,
             ),
-            trailing: const Icon(
-              Icons.shopping_cart,
-              size: 40,
+            trailing: Image.asset(
+              'assets/images/grocery_list.png',
+              height: 40,
             ),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const ShoppingCart(
-                          title: 'My Shopping Cart',
+                    builder: (context) => const GroceryListScreen(
+                          title: 'My Grocery List',
                         )),
               );
             },

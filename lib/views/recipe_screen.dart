@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:recipe_app/models/recipe_adapter.dart';
-import 'package:recipe_app/util/box_manager.dart';
+
 import 'package:recipe_app/util/index.dart';
 
 class RecipeScreen extends StatefulWidget {
@@ -15,18 +14,25 @@ class RecipeScreen extends StatefulWidget {
 }
 
 class _RecipeScreenState extends State<RecipeScreen> {
-  late Box<Recipe> box;
+  //initializing liked recipes box and grocery list box
+  late Box<Recipe> likedBox;
+  late Box<GroceryList> groceryBox;
 
   @override
   void initState() {
     super.initState();
-    box = HiveBoxManager().box;
+    likedBox = HiveBoxManager().likedRecipesBox;
+    groceryBox = HiveBoxManager().groceryListBox;
   }
 
   void _addToLiked(Recipe recipe) async {
-    box.add(recipe);
-    print('added recipe to box');
-    print(box.get(2));
+    likedBox.add(recipe);
+  }
+
+  void _addToGroceryList(Recipe recipe) async {
+    groceryBox
+        .add(GroceryList(name: recipe.name, ingredients: recipe.ingredients));
+    
   }
 
   @override
@@ -49,7 +55,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 thumbnailUrl: widget.recipe.images,
                 steps: widget.recipe.steps,
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.9,
                 child: const Text(
                   'Instructions',
@@ -108,7 +114,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Ingredient',
+                      'Ingredients',
                       style: TextStyle(
                         fontSize: 30,
                       ),
@@ -117,7 +123,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                       ),
-                      onPressed: () {},
+                      onPressed: () => _addToGroceryList(widget.recipe),
                       child: const Text(
                         'Add to Cart',
                         style: TextStyle(color: Colors.white, fontSize: 18),
