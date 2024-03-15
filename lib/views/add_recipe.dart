@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:recipe_app/models/recipe_adapter.dart';
+import 'package:recipe_app/util/box_manager.dart';
 import 'package:recipe_app/util/index.dart';
 
 class AddRecipe extends StatefulWidget {
@@ -7,9 +11,30 @@ class AddRecipe extends StatefulWidget {
 
   @override
   State<AddRecipe> createState() => _AddRecipeState();
-} 
+}
 
 class _AddRecipeState extends State<AddRecipe> {
+  late Box<Recipe> box;
+
+  @override
+  void initState() {
+    super.initState();
+    box = HiveBoxManager().box;
+  }
+
+  Future<void> _addToLiked() async {
+    box.add(Recipe(
+        name: 'name4',
+        images: 'images',
+        rating: 1,
+        totalTime: 'totalTime',
+        steps: ['steps'],
+        ingredients: ['ingredients']));
+    Iterable<dynamic> keys = box.keys;
+
+    print(keys);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +42,8 @@ class _AddRecipeState extends State<AddRecipe> {
         title: Text(widget.title),
         backgroundColor: Colors.deepOrange,
       ),
+      floatingActionButton:
+          ElevatedButton(onPressed: _addToLiked, child: const Icon(Icons.add)),
       drawer: const AppMenu(),
       body: const Center(
         child: Column(

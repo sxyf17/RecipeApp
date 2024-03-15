@@ -4,8 +4,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'models/recipe_adapter.dart';
 
-void main() {
-  recipeDB();
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(RecipeAdapter());
+  Hive.openBox<Recipe>('likedRecipesBox');
   runApp(const MyApp());
 }
 
@@ -26,10 +28,4 @@ class MyApp extends StatelessWidget {
       home: const RecipeHome(),
     );
   }
-}
-
-void recipeDB() async {
-  await Hive.initFlutter();
-  Hive.registerAdapter(RecipeAdapter());
-  await Hive.openBox<Recipe>('likedRecipesBox');
 }

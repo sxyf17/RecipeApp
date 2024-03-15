@@ -5,8 +5,6 @@ import 'package:recipe_app/views/sign_up.dart';
 class RecipeHome extends StatefulWidget {
   const RecipeHome({super.key});
 
-
-
   @override
   State<RecipeHome> createState() => _RecipeHomeState();
 }
@@ -74,7 +72,7 @@ class _RecipeHomeState extends State<RecipeHome> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const GlobalRecipesPage(title: 'Global Recipes',)),
+                        builder: (context) => const AddRecipe(title: 'Global Recipes',)),
                   );
                 },
                 style: ElevatedButton.styleFrom(

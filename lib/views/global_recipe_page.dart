@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:recipe_app/models/recipe_adapter.dart';
 import 'package:recipe_app/util/index.dart';
 import '../models/recipe.api.dart';
 import '../models/recipe.dart';
@@ -24,6 +26,7 @@ class _GlobalRecipesPageState extends State<GlobalRecipesPage> {
 
   Future<void> getRecipes() async {
     _recipes = await RecipeApi.getRecipe();
+    
     setState(() {
       _isLoading = false;
     });
@@ -49,18 +52,19 @@ class _GlobalRecipesPageState extends State<GlobalRecipesPage> {
                           MaterialPageRoute(
                               builder: (context) => RecipeScreen(
                                     title: 'Recipe Details',
-                                    recipe: _recipes[index],
+                                    recipe: _recipes[index] as Recipe,
                                   )),
                         );
                       },
                       child: RecipeCard(
-                          recipe: _recipes[index],
+                          recipe: 
+                              _recipes[index],
                           title: _recipes[index].name,
                           cookTime: _recipes[index].totalTime,
                           rating: _recipes[index].rating.toString(),
                           thumbnailUrl: _recipes[index].images,
                           steps: _recipes[index].steps));
                 },
-              )); 
+              ));
   }
 }

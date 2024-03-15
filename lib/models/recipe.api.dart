@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:recipe_app/config.dart';
 
 import 'recipe.dart';
+import 'recipe_adapter.dart';
 
 class RecipeApi {
   static Future<List<Recipe>> getRecipe() async {

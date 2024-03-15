@@ -1,9 +1,8 @@
 import 'package:hive/hive.dart';
-import 'package:recipe_app/models/recipe.dart';
 
 part 'recipe_adapter.g.dart';
 
-@HiveType(typeId: 1)
+@HiveType(typeId: 1,)
 class Recipe {
   
   Recipe({
@@ -14,6 +13,8 @@ class Recipe {
       required this.steps,
       required this.ingredients
   });
+
+  
   
   @HiveField(0)
   String name;
@@ -33,33 +34,34 @@ class Recipe {
   @HiveField(5)
   final List<String> ingredients;
 
+
+  factory Recipe.fromJson(dynamic json) {
+    List<dynamic> ingredientLines = json['ingredientLines'] ?? [];
+    List<String> ingredients =
+        ingredientLines.map((line) => line['wholeLine'] as String).toList();
+
+    return Recipe(
+        name: json['details']['name'] as String,
+        images: json['details']['images'][0]['hostedLargeUrl'] as String,
+        rating: json['details']['rating'] as double,
+        totalTime: json['details']['totalTime'] as String,
+        steps: json['preparationSteps'] != null
+            ? List<String>.from(json['preparationSteps'])
+            : [], // If steps are null, initialize with an empty list
+
+        ingredients: ingredients);
+  }
+
+  static List<Recipe> recipesFromSnapshot(List snapshot) {
+    return snapshot.map((data) {
+      return Recipe.fromJson(data);
+    }).toList();
+  }
+
+  @override
+  String toString() {
+    return 'Recipe {name: $name, image: $images, rating: $rating, totalTime: $totalTime, steps: $steps, ingredients: $ingredients}';
+  }
+
 }
 
-// class RecipeAdapter extends TypeAdapter<Recipe> {
-//   @override
-//   final int typeId = 0; // Unique identifier for this adapter
-
-//   @override
-//   Recipe read(BinaryReader reader) {
-//     // Deserialize the Recipe object
-//     return Recipe(
-//       name: reader.readString(),
-//       images: reader.readString(),
-//       rating: reader.readDouble(),
-//       totalTime: reader.readString(),
-//       steps: List<String>.from(reader.readList()),
-//       ingredients: List<String>.from(reader.readList()),
-//     );
-//   }
-
-//   @override
-//   void write(BinaryWriter writer, Recipe obj) {
-//     // Serialize the Recipe object
-//     writer.writeString(obj.name);
-//     writer.writeString(obj.images);
-//     writer.writeDouble(obj.rating);
-//     writer.writeString(obj.totalTime);
-//     writer.writeList(obj.steps);
-//     writer.writeList(obj.ingredients);
-//   }
-// }

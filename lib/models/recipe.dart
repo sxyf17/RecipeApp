@@ -1,4 +1,6 @@
-class Recipe {
+import 'recipe_adapter.dart';
+
+class RecipeObj {
   final String name;
   final String images;
   final double rating;
@@ -9,7 +11,7 @@ class Recipe {
   //The value of browse-categories/display/tag returned in
   //categories/list API
 
-  Recipe(
+  RecipeObj(
       {required this.name,
       required this.images,
       required this.rating,
@@ -17,12 +19,12 @@ class Recipe {
       required this.steps,
       required this.ingredients});
 
-  factory Recipe.fromJson(dynamic json) {
+  factory RecipeObj.fromJson(dynamic json) {
     List<dynamic> ingredientLines = json['ingredientLines'] ?? [];
     List<String> ingredients =
         ingredientLines.map((line) => line['wholeLine'] as String).toList();
 
-    return Recipe(
+    return RecipeObj(
         name: json['details']['name'] as String,
         images: json['details']['images'][0]['hostedLargeUrl'] as String,
         rating: json['details']['rating'] as double,
@@ -34,11 +36,23 @@ class Recipe {
         ingredients: ingredients);
   }
 
-  static List<Recipe> recipesFromSnapshot(List snapshot) {
+  static List<RecipeObj> recipesFromSnapshot(List snapshot) {
     return snapshot.map((data) {
-      return Recipe.fromJson(data);
+      return RecipeObj.fromJson(data);
     }).toList();
   }
+
+  static Recipe recipeObjToRecipe(RecipeObj recipeObj) {
+    return Recipe(
+      name: recipeObj.name,
+      images: recipeObj.images,
+      rating: recipeObj.rating,
+      totalTime: recipeObj.totalTime,
+      steps: recipeObj.steps,
+      ingredients: recipeObj.ingredients,
+    );
+  }
+
 
   @override
   String toString() {
