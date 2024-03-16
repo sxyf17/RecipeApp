@@ -69,8 +69,8 @@ class _IngredientState extends State<Ingredient> {
   Widget build(BuildContext context) {
     return Card(
         margin: const EdgeInsets.all(20),
-        color: Colors.blueGrey,
-        child: Padding( 
+        color: Colors.amberAccent.withOpacity(0.7),
+        child: Padding(
           padding: const EdgeInsets.all(30),
           child: ListTile(
             title: Text(

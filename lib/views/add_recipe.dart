@@ -12,22 +12,16 @@ class AddRecipe extends StatefulWidget {
 }
 
 class _AddRecipeState extends State<AddRecipe> {
-  late Box<Recipe> box;
+  late Box<Recipe> likedBox;
 
   @override
   void initState() {
     super.initState();
-    box = HiveBoxManager().likedRecipesBox;
+    likedBox = HiveBoxManager().likedRecipesBox;
   }
 
   Future<void> _addToLiked() async {
-    box.add(Recipe(
-        name: 'name4',
-        images: 'images',
-        rating: 1,
-        totalTime: 'totalTime',
-        steps: ['steps'],
-        ingredients: ['ingredients']));
+    //todo
 
   }
 

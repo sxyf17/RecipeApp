@@ -85,58 +85,6 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 thumbnailUrl: widget.recipe.images,
                 steps: widget.recipe.steps,
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.9,
-                child: const Text(
-                  'Instructions',
-                  style: TextStyle(
-                    fontSize: 30,
-                  ),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: Colors.grey,
-                ),
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: 180,
-                padding: const EdgeInsets.all(10.0),
-                child: Center(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        const Text(
-                          'Steps:',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        // Loop through each step and display it in a separate Text widget
-                        for (String step in widget.recipe.steps)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15.0),
-                                color: Colors.white,
-                              ),
-                              padding: const EdgeInsets.all(5),
-                              child: Text(
-                                step,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                          )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
@@ -151,7 +99,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: _onCart ? Colors.grey : Colors.black,
+                        backgroundColor:
+                            _onCart ? Colors.lightBlueAccent : Colors.lightBlue,
                       ),
                       onPressed: () {
                         if (!_onCart) {
@@ -162,7 +111,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
                       },
                       child: Text(
                         _onCart ? 'Already Added' : 'Add to Cart',
-                        style: const TextStyle(color: Colors.white, fontSize: 18),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 18),
                       ),
                     ),
                   ],
@@ -171,7 +121,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
-                  color: Colors.grey,
+                  color: Colors.grey.withOpacity(0.5),
                 ),
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 150,
@@ -204,12 +154,65 @@ class _RecipeScreenState extends State<RecipeScreen> {
                   ),
                 ),
               ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: const Text(
+                  'Instructions',
+                  style: TextStyle(
+                    fontSize: 30,
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.grey.withOpacity(0.7),
+                ),
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: 180,
+                padding: const EdgeInsets.all(10.0),
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        const Text(
+                          'Steps:',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        // Loop through each step and display it in a separate Text widget
+                        for (String step in widget.recipe.steps)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Colors.white,
+                              ),
+                              padding: const EdgeInsets.all(5),
+                              child: Text(
+                                step,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                          )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 10,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
+                  backgroundColor:
+                      _isLiked ? Colors.black : Colors.orangeAccent,
                 ),
                 onPressed: () => {
                   if (_isLiked)

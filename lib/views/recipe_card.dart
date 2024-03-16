@@ -70,22 +70,18 @@ class RecipeCard extends StatelessWidget {
                   padding: const EdgeInsets.all(5),
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Row(
                     children: [
                       ElevatedButton(
-                          onPressed: () {},
-                          child: Image.asset(
-                            'assets/images/red_heart.png',
-                            height: 25,
-                          )),
-                      const SizedBox(
-                        height: 7,
-                      ),
-                      const SizedBox(
-                        height: 7,
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black.withOpacity(0.1)),
+                        child: const Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        ),
                       ),
                     ],
                   ),
