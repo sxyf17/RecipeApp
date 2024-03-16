@@ -17,22 +17,52 @@ class _RecipeScreenState extends State<RecipeScreen> {
   //initializing liked recipes box and grocery list box
   late Box<Recipe> likedBox;
   late Box<GroceryList> groceryBox;
+  var keysOfData = [];
+  bool _isLiked = false;
+  bool _onCart = false;
 
   @override
   void initState() {
     super.initState();
     likedBox = HiveBoxManager().likedRecipesBox;
     groceryBox = HiveBoxManager().groceryListBox;
+    _checkLiked(widget.recipe);
   }
 
   void _addToLiked(Recipe recipe) async {
     likedBox.add(recipe);
+    setState(() {
+      _isLiked = true;
+    });
+  }
+
+  void _checkLiked(Recipe recipe) async {
+    for (var i = 0; i < likedBox.length; i++) {
+      var data = likedBox.getAt(i) as Recipe;
+      if (data == recipe) {
+        keysOfData.add(likedBox.keyAt(i));
+        _isLiked = true;
+      }
+    }
+  }
+
+  void _deleteFromLiked() async {
+    for (var key in keysOfData) {
+      await likedBox.delete(key);
+    }
+    keysOfData = [];
+    setState(() {
+      _isLiked = false;
+    });
+    _checkLiked(widget.recipe);
   }
 
   void _addToGroceryList(Recipe recipe) async {
     groceryBox
         .add(GroceryList(name: recipe.name, ingredients: recipe.ingredients));
-    
+    setState(() {
+      _onCart = true;
+    });
   }
 
   @override
@@ -121,11 +151,17 @@ class _RecipeScreenState extends State<RecipeScreen> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
+                        backgroundColor: _onCart ? Colors.grey : Colors.black,
                       ),
-                      onPressed: () => _addToGroceryList(widget.recipe),
-                      child: const Text(
-                        'Add to Cart',
+                      onPressed: () {
+                        if (!_onCart) {
+                          _addToGroceryList(widget.recipe);
+                        } else {
+                          null;
+                        }
+                      },
+                      child: Text(
+                        _onCart ? 'Already Added' : 'Add to Cart',
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                     ),
@@ -175,10 +211,15 @@ class _RecipeScreenState extends State<RecipeScreen> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                 ),
-                onPressed: () => _addToLiked(widget.recipe),
-                child: const Text(
-                  'Like Recipe',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                onPressed: () => {
+                  if (_isLiked)
+                    {_deleteFromLiked()}
+                  else
+                    {_addToLiked(widget.recipe)}
+                },
+                child: Text(
+                  _isLiked ? 'Unlike Recipe' : 'Like Recipe',
+                  style: const TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             ],
