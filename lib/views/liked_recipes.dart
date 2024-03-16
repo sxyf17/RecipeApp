@@ -13,13 +13,13 @@ class LikedRecipesScreen extends StatefulWidget {
 }
 
 class _LikedRecipesScreenState extends State<LikedRecipesScreen> {
-  late Box<Recipe> box;
+  late Box<Recipe> likedBox;
 
   @override
   void initState() {
     super.initState();
     // _loadLikedRecipes() box ;
-    box = HiveBoxManager().likedRecipesBox;
+    likedBox = HiveBoxManager().likedRecipesBox;
   }
 
   @override
@@ -31,7 +31,7 @@ class _LikedRecipesScreenState extends State<LikedRecipesScreen> {
       ),
       drawer: const AppMenu(),
       body: ValueListenableBuilder(
-        valueListenable: box.listenable(),
+        valueListenable: likedBox.listenable(),
         builder: (context, Box<Recipe> box, _) {
           final likedRecipes =
               box.values.toList(); // Get the list of liked recipes from the box

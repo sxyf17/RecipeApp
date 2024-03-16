@@ -7,3 +7,4 @@ export 'app_menu.dart';
 export 'box_manager.dart';
 export '../models/recipe_adapter.dart';
 export '../models/grocery_adapter.dart';
+export '../models/user_adapter.dart';

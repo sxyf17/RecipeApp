@@ -162,7 +162,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                       },
                       child: Text(
                         _onCart ? 'Already Added' : 'Add to Cart',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        style: const TextStyle(color: Colors.white, fontSize: 18),
                       ),
                     ),
                   ],
@@ -190,7 +190,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: Colors.white,
                               ),
-                              padding: EdgeInsets.all(5),
+                              padding: const EdgeInsets.all(5),
                               child: Text(
                                 ingredients,
                                 style: const TextStyle(

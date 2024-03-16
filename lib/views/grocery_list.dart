@@ -68,13 +68,14 @@ class _IngredientState extends State<Ingredient> {
   @override
   Widget build(BuildContext context) {
     return Card(
-        margin: EdgeInsets.all(20),
-        child: Padding(
-          padding: EdgeInsets.all(30),
+        margin: const EdgeInsets.all(20),
+        color: Colors.blueGrey,
+        child: Padding( 
+          padding: const EdgeInsets.all(30),
           child: ListTile(
             title: Text(
               widget.ingredients.name,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             subtitle: ListView.builder(
               shrinkWrap: true,
