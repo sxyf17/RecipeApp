@@ -108,7 +108,6 @@ class _RecipeHomeState extends State<RecipeHome> {
                       ),
                     );
                   } else {
-                    print(loginBox.get(1)?.username);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Invalid username or password'),

@@ -6,7 +6,7 @@ import 'recipe_adapter.dart';
 class RecipeApi {
   static Future<List<Recipe>> getRecipe() async {
     var uri = Uri.https('yummly2.p.rapidapi.com', '/feeds/list',
-        {"limit": "18", "start": "0", "tag": "list.recipe.other.guided"});
+        {"limit": "30", "start": "0", "tag": "list.recipe.other.guided"});
 
     final response = await http.get(uri, headers: {
       "x-rapidapi-key": apiKey,

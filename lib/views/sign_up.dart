@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../util/index.dart';
+import 'log_in.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -152,19 +153,18 @@ class SignUpPageState extends State<SignUpPage> {
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       child: ElevatedButton(
                         onPressed: () {
-                          // Validate returns true if the form is valid, or false otherwise.
                           if (_formKey.currentState!.validate()) {
-                            // If the form is valid, display a snackbar.
+                            
                             _addLogin(User(
                                 username: _nameController.text,
                                 dob: _dobController.text,
                                 email: _emailController.text,
                                 password: _passwordController.text));
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) => const RecipeHome()),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const RecipeHome()),
+                            );
                           }
                         },
                         child: const Text('Submit'),
