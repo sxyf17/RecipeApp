@@ -75,23 +75,6 @@ class AppMenu extends StatelessWidget {
           ListTile(
             horizontalTitleGap: 10,
             title: const Text(
-              'Add Recipe',
-              textAlign: TextAlign.start,
-            ),
-            trailing: const Icon(Icons.add, size: 40),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const AddRecipe(
-                          title: 'Add Recipe',
-                        )),
-              );
-            },
-          ),
-          ListTile(
-            horizontalTitleGap: 10,
-            title: const Text(
               'Log Out',
               textAlign: TextAlign.start,
             ),
