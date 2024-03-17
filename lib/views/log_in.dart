@@ -19,7 +19,7 @@ class _RecipeHomeState extends State<RecipeHome> {
   void initState() {
     super.initState();
     // Add a delay before accessing the Hive box
-    Future.delayed(const Duration(milliseconds: 1000), () {
+    Future.delayed(const Duration(milliseconds: 5000), () {
       loginBox = HiveBoxManager().userLoginBox;
       setState(() {}); // Trigger a rebuild after initialization
     });

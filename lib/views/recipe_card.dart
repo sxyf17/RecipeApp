@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/models/recipe_adapter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:recipe_app/util/index.dart';
 
-class RecipeCard extends StatelessWidget {
+class RecipeCard extends StatefulWidget {
   final Recipe recipe;
   final String title;
   final String rating;
@@ -16,6 +18,50 @@ class RecipeCard extends StatelessWidget {
       required this.rating,
       required this.thumbnailUrl,
       required this.steps});
+  @override
+  RecipeCardState createState() => RecipeCardState();
+}
+
+class RecipeCardState extends State<RecipeCard> {
+  late Box<Recipe> likedBox;
+  bool _isLiked = false;
+  var keysOfData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    // _loadLikedRecipes() box ;
+    likedBox = HiveBoxManager().likedRecipesBox;
+    _checkLiked(widget.recipe);
+  }
+
+  void _checkLiked(Recipe recipe) async {
+    for (var i = 0; i < likedBox.length; i++) {
+      var data = likedBox.getAt(i) as Recipe;
+      if (data == recipe) {
+        keysOfData.add(likedBox.keyAt(i));
+        _isLiked = true;
+      }
+    }
+  }
+
+  void _deleteFromLiked() async {
+    for (var key in keysOfData) {
+      await likedBox.delete(key);
+    }
+    keysOfData = [];
+    setState(() {
+      _isLiked = false;
+    });
+    _checkLiked(widget.recipe);
+  }
+
+  void _addToLiked(Recipe recipe) async {
+    likedBox.add(recipe);
+    setState(() {
+      _isLiked = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +88,7 @@ class RecipeCard extends StatelessWidget {
             Colors.black.withOpacity(0.35),
             BlendMode.multiply,
           ),
-          image: NetworkImage(thumbnailUrl),
+          image: NetworkImage(widget.thumbnailUrl),
           fit: BoxFit.cover,
         ),
       ),
@@ -53,7 +99,7 @@ class RecipeCard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: Text(
-                title,
+                widget.title,
                 style: const TextStyle(fontSize: 19, color: Colors.white),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
@@ -75,12 +121,18 @@ class RecipeCard extends StatelessWidget {
                   child: Row(
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_isLiked) {
+                            _deleteFromLiked();
+                          } else {
+                            _addToLiked(widget.recipe);
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black.withOpacity(0.1)),
-                        child: const Icon(
+                        child: Icon(
                           Icons.favorite,
-                          color: Colors.red,
+                          color: _isLiked ? Colors.red : Colors.white,
                         ),
                       ),
                     ],
@@ -101,7 +153,7 @@ class RecipeCard extends StatelessWidget {
                         size: 18,
                       ),
                       const SizedBox(width: 7),
-                      Text(cookTime,
+                      Text(widget.cookTime,
                           style: const TextStyle(color: Colors.white)),
                     ],
                   ),
