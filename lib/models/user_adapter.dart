@@ -4,7 +4,11 @@ part 'user_adapter.g.dart';
 
 @HiveType(typeId: 3)
 class User {
-  User({required this.username, required this.email, required this.dob, required this.password});
+  User(
+      {required this.username,
+      required this.email,
+      required this.dob,
+      required this.password});
 
   @HiveField(0)
   String username;

@@ -48,8 +48,15 @@ class _RecipeHomeState extends State<RecipeHome> {
               height: 10,
             ),
             const Text(
-              'Welcome to Recipe App!',
+              'Welcome to QuickPlate!',
               style: TextStyle(fontSize: 25),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'Your fast recipe companion',
+              style: TextStyle(fontSize: 15, color: Colors.grey),
             ),
             const SizedBox(
               height: 10,

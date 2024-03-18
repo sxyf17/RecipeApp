@@ -60,7 +60,6 @@ class _IngredientState extends State<Ingredient> {
   @override
   void initState() {
     super.initState();
-    // Initialize checkbox values with false for each ingredient
     checkboxValues =
         List<bool>.filled(widget.ingredients.ingredients.length, false);
   }

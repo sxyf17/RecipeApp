@@ -110,7 +110,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                         }
                       },
                       child: Text(
-                        _onCart ? 'Already Added' : 'Add to Cart',
+                        _onCart ? 'Already Added' : 'Add to Grocery List',
                         style:
                             const TextStyle(color: Colors.white, fontSize: 18),
                       ),
