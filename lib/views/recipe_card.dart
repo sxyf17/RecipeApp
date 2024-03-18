@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/models/recipe_adapter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:recipe_app/util/index.dart';
 

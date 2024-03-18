@@ -27,7 +27,7 @@ Users are able to perform a variety of options, such as viewing individual recip
     flutter pub get
 
 4. **Visit https://rapidapi.com/apidojo/api/yummly2 for api access key**
- - **Important: First create free account for 500 api calls/month. Api Key will not work until account created and subscirbed to one of the plans**
+ - **Important: First create free account on rapidAPI for 500 api calls/month. Api Key will not work until account created and subscirbed to one of the plans**
 - navigate back to https://rapidapi.com/apidojo/api/yummly2 yummly page
 - select feeds/list, copy api code in 'X-rapidapiAPI-Key'
 ![alt text](yummly.jpg)
