@@ -100,7 +100,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
-                            _onCart ? Colors.lightBlueAccent : Colors.lightBlue,
+                            _onCart ? Colors.lightGreenAccent : Colors.lightBlueAccent,
                       ),
                       onPressed: () {
                         if (!_onCart) {
@@ -110,7 +110,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                         }
                       },
                       child: Text(
-                        _onCart ? 'Already Added' : 'Add to Grocery List',
+                        _onCart ? 'Added!' : 'Quick Add',
                         style:
                             const TextStyle(color: Colors.white, fontSize: 18),
                       ),
