@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:recipe_app/util/index.dart';
+import 'package:quick_plate/util/index.dart';
 
 class HiveBoxManager {
   static final HiveBoxManager _singleton = HiveBoxManager._internal();

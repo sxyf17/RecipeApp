@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'package:recipe_app/util/index.dart';
+import 'package:quick_plate/util/index.dart';
 
 class RecipeScreen extends StatefulWidget {
   final String title;
@@ -99,8 +99,9 @@ class _RecipeScreenState extends State<RecipeScreen> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            _onCart ? Colors.lightGreenAccent : Colors.lightBlueAccent,
+                        backgroundColor: _onCart
+                            ? Colors.lightGreenAccent
+                            : Colors.lightBlueAccent,
                       ),
                       onPressed: () {
                         if (!_onCart) {

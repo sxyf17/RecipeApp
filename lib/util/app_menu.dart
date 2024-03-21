@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/util/index.dart';
+import 'package:quick_plate/util/index.dart';
 import '../views/log_in.dart';
 
 class AppMenu extends StatelessWidget {

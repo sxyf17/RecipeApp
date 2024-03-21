@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:recipe_app/util/index.dart';
-import 'package:recipe_app/views/sign_up.dart';
+import 'package:quick_plate/util/index.dart';
+import 'package:quick_plate/views/sign_up.dart';
 
 class RecipeHome extends StatefulWidget {
   const RecipeHome({super.key});

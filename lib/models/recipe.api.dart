@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:recipe_app/config.dart';
+import 'package:quick_plate/config.dart';
 import 'recipe_adapter.dart';
 
 class RecipeApi {

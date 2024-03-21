@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:recipe_app/util/index.dart';
+import 'package:quick_plate/util/index.dart';
 import 'recipe_screen.dart';
 
 class LikedRecipesScreen extends StatefulWidget {

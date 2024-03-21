@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/util/index.dart';
+import 'package:quick_plate/util/index.dart';
 import '../models/recipe.api.dart';
 import 'recipe_screen.dart';
 
@@ -23,7 +23,7 @@ class _GlobalRecipesPageState extends State<GlobalRecipesPage> {
 
   Future<void> getRecipes() async {
     _recipes = await RecipeApi.getRecipe();
-    
+
     setState(() {
       _isLoading = false;
     });
@@ -54,8 +54,7 @@ class _GlobalRecipesPageState extends State<GlobalRecipesPage> {
                         );
                       },
                       child: RecipeCard(
-                          recipe: 
-                              _recipes[index],
+                          recipe: _recipes[index],
                           title: _recipes[index].name,
                           cookTime: _recipes[index].totalTime,
                           rating: _recipes[index].rating.toString(),

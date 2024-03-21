@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/views/log_in.dart';
+import 'package:quick_plate/views/log_in.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:recipe_app/util/index.dart';
+import 'package:quick_plate/util/index.dart';
 
 void main() async {
   // initializing Hive databases

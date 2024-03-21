@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "174489772790",
+    "project_id": "quickplate-dda80",
+    "storage_bucket": "quickplate-dda80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174489772790:android:cca55f6ca350b44f2d02d7",
+        "android_client_info": {
+          "package_name": "com.quick_plate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSZn1bZNBQEpxwbaV-dNNe79AHdjwt3F8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

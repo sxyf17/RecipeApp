@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/util/index.dart';
+import 'package:quick_plate/util/index.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class GroceryListScreen extends StatefulWidget {
